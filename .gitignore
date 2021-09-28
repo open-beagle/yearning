@@ -106,3 +106,5 @@ ENV/
 .vscode/
 .idea/Yearning.iml
 .idea/inspectionProfiles/Project_Default.xml
+
+vendor/

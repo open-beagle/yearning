@@ -27,7 +27,6 @@ docker run \
 -v /go/pkg/:/go/pkg \
 -w /go/src/gitlab.wodcloud.com/cloud/yearning \
 -e PLUGIN_BINARY=yearning \
--e PLUGIN_MAIN=cmd \
 -e CI_WORKSPACE=/go/src/gitlab.wodcloud.com/cloud/yearning \
 registry.cn-qingdao.aliyuncs.com/wod/devops-go-arch:1.16.7-alpine
 ```

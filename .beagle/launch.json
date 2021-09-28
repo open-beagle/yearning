@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Go",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceRoot}/main.go",
+      "args": ["--config=${workspaceRoot}/.vscode/conf.toml"],
+      "env": {
+        // "HTTP_PROXY": "http://192.168.1.11:8888",
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "",
+        "MYSQL_ADDR": "127.0.0.1:3306",
+        "MYSQL_DB": "Yearning"
+      },
+      "showLog": true
+    }
+  ]
+}

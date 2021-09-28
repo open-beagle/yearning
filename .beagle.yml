@@ -100,10 +100,6 @@ steps:
         from_secret: REGISTRY_USER_ALIYUN
       password:
         from_secret: REGISTRY_PASSWORD_ALIYUN
-    depends_on:
-      - docker-amd64
-      - docker-arm64
-      - docker-ppc64le
 
 ---
 kind: pipeline

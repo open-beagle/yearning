@@ -28,7 +28,7 @@ steps:
     image: registry.cn-qingdao.aliyuncs.com/wod/yearning-gemini:v2.3.2
     commands:
       - mkdir -p ./dist/www
-      - cp -r /dist ./dist/www
+      - cp -r /dist/* ./dist/www
 
   - name: build-go
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-go-arch:1.16.7-alpine

@@ -29,4 +29,13 @@ docker run \
 -e PLUGIN_BINARY=yearning \
 -e CI_WORKSPACE=/go/src/gitlab.wodcloud.com/cloud/yearning \
 registry.cn-qingdao.aliyuncs.com/wod/devops-go-arch:1.16.7-alpine
+
+# frontend
+docker run \
+-it \
+--rm \
+-v $PWD/:/go/src/gitlab.wodcloud.com/cloud/yearning \
+-w /go/src/gitlab.wodcloud.com/cloud/yearning \
+registry.cn-qingdao.aliyuncs.com/wod/yearning-gemini:v2.3.2 \
+ash -c 'rm -rf ./dist/www && mkdir -p ./dist/www && cp -r /dist/* ./dist/www'
 ```

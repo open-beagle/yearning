@@ -31,7 +31,6 @@ steps:
         path: /go/pkg
     settings:
       binary: yearning
-      main: cmd
 
   - name: docker-amd64
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0

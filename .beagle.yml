@@ -24,6 +24,12 @@ volumes:
       path: /var/run/docker.sock
 
 steps:
+  - name: build-frontend
+    image: registry.cn-qingdao.aliyuncs.com/wod/yearning-gemini:v2.3.2
+    commands:
+      - mkdir -p ./dist/www
+      - cp -r /dist ./dist/www
+
   - name: build-go
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-go-arch:1.16.7-alpine
     volumes:
@@ -31,12 +37,6 @@ steps:
         path: /go/pkg
     settings:
       binary: yearning
-
-  - name: build-frontend
-    image: registry.cn-qingdao.aliyuncs.com/wod/yearning-gemini:v2.3.2
-    commands:
-      - mkdir -p ./dist/www
-      - cp /dist ./dist/www
 
   - name: docker-amd64
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0

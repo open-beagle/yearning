@@ -13,6 +13,9 @@ EXPOSE 8000
 
 COPY dist/yearning-$TARGETOS-$TARGETARCH  /opt/Yearning
 COPY .beagle/conf.toml /opt/conf.toml
+COPY dist/www /www
+
+ENV UI_PATH=/www
 
 RUN apk add --no-cache tzdata libc6-compat && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \

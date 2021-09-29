@@ -32,6 +32,12 @@ steps:
     settings:
       binary: yearning
 
+  - name: build-frontend
+    image: registry.cn-qingdao.aliyuncs.com/wod/yearning-gemini:v2.3.2
+    commands:
+      - mkdir -p ./dist/www
+      - cp /dist ./dist/www
+
   - name: docker-amd64
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-docker:1.0
     volumes:

@@ -20,6 +20,11 @@ var (
 		Code: 1310,
 		Text: "非法传参！",
 	}
+
+	ERR_LOGIN_CRACK = Resp{
+		Code: 1303,
+		Text: "账号/密码错误,登录已被冻结5min!",
+	}
 )
 
 // SOAR 错误码 1900-1999

@@ -108,3 +108,4 @@ ENV/
 .idea/inspectionProfiles/Project_Default.xml
 
 vendor/
+__debug_bin

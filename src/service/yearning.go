@@ -20,14 +20,20 @@ import (
 	"Yearning-go/src/router"
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"os"
+
 	"github.com/cookieY/yee"
 	"github.com/cookieY/yee/middleware"
 	"github.com/gobuffalo/packr/v2"
-	"net/http"
 )
 
 func StartYearning(port string, host string) {
-	box := packr.New("gemini", "./dist")
+	ui_dir := os.Getenv("UI_PATH")
+	if len(ui_dir) == 0 {
+		ui_dir = "./dist"
+	}
+	box := packr.New("gemini", ui_dir)
 	model.DB().First(&model.GloPer)
 	model.Host = host
 	_ = json.Unmarshal(model.GloPer.Message, &model.GloMessage)

@@ -73,12 +73,21 @@ func UserGeneralLogin(c yee.Context) (err error) {
 		c.Logger().Error(err.Error())
 		return c.JSON(http.StatusOK, commom.ERR_REQ_BIND)
 	}
+	if LoginStartCheck(*u) {
+		return c.JSON(http.StatusOK, commom.ERR_LOGIN_CRACK)
+	}
 	var account model.CoreAccount
 	if !model.DB().Where("username = ?", u.Username).First(&account).RecordNotFound() {
 		if account.Username != u.Username {
+			if LoginEndCheck(*u, false) {
+				return c.JSON(http.StatusOK, commom.ERR_LOGIN_CRACK)
+			}
 			return c.JSON(http.StatusOK, commom.ERR_LOGIN)
 		}
 		if e := lib.DjangoCheckPassword(&account, u.Password); e {
+			if LoginEndCheck(*u, true) {
+				return c.JSON(http.StatusOK, commom.ERR_LOGIN_CRACK)
+			}
 			token, tokenErr := lib.JwtAuth(u.Username, account.Rule)
 			if tokenErr != nil {
 				c.Logger().Error(tokenErr.Error())
@@ -91,7 +100,9 @@ func UserGeneralLogin(c yee.Context) (err error) {
 			}
 			return c.JSON(http.StatusOK, commom.SuccessPayload(dataStore))
 		}
-
+	}
+	if LoginEndCheck(*u, false) {
+		return c.JSON(http.StatusOK, commom.ERR_LOGIN_CRACK)
 	}
 	return c.JSON(http.StatusOK, commom.ERR_LOGIN)
 
